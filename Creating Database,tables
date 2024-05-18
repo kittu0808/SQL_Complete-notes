@@ -1,0 +1,21 @@
+/*
+Create a pastries table
+it should include 2 columns: name and quantity.alter
+Name is 50 characters max.alter
+Inspect your table/columns in the CLI
+Delete your table!
+*/
+
+CREATE DATABASE MySql_Notes;
+
+use MySql_Notes;
+
+CREATE TABLE pastries(
+name VARCHAR(50) PRIMARY KEY NOT NULL,
+quantity INT DEFAULT 0
+);
+
+SHOW tables;
+DESC pastries;
+DROP TABLE pastries;
+SHOW tables;
