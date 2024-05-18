@@ -1,0 +1,64 @@
+CREATE TABLE cats (
+cat_id int not null auto_increment,
+name varchar(100),
+breed varchar(100),
+age int,
+primary key(cat_id)
+);
+
+Desc cats;
+
+INSERT INTO cats(name, breed, age) 
+VALUES ('Ringo', 'Tabby', 4),
+       ('Cindy', 'Maine Coon', 10),
+       ('Dumbledore', 'Maine Coon', 11),
+       ('Egg', 'Persian', 4),
+       ('Misty', 'Tabby', 13),
+       ('George Michael', 'Ragdoll', 9),
+       ('Jackson', 'Sphynx', 7);
+       
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+
+#id only
+select cat_id from cats;
+
+#name,breed columns
+SELECT name,breed
+from cats;
+
+-- Just Tabby breed cats only
+select name,age
+from cats
+where breed like 'Tabby';
+
+# cat_id same as age
+select cat_id,age
+from cats
+where cat_id = age;
+
+#change Jackson's name to Jack
+update cats
+set name = 'jack'
+where name = 'jackson';
+
+#Change Ringo's breed to "British Shorthair"
+update cats
+set breed = 'British Shorthair'
+where name = 'Ringo';
+
+#update both Maine coons ages to be 12
+update cats
+set age = 12
+where breed = 'Maine coon';
+
+#Delete all 4 year old cats
+delete from cats
+where age =4;
+
+#Delete cats whose age is the same as their cat_id
+Delete From cats
+where cat_id = age;
+
+#Delete all cats
+Delete from cats;
+       
