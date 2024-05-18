@@ -1,0 +1,25 @@
+/*
+Define an employee table, with the following fields:
+id-number(automatically increments),mandatory,primary key
+last_name - text
+first_name - text
+middle_name - text
+age - number 
+current_status- text,mandatory
+*/
+
+CREATE TABLE employees(
+	id int auto_increment not null primary key,
+	last_name varchar(100) not null,
+	first_name varchar(100) not null,
+	middle_name varchar(100),
+	age int not null,
+	current_status varchar(150) not null default 'employed'
+);
+
+SHOW tables;
+
+INSERT INTO employees(first_name,last_name,age,current_status)
+VALUES
+('Shubham','Kulkarni',24,'Student'),
+('Sourabh','Kulkarni',25,'Super Employed')
