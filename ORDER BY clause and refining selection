@@ -1,0 +1,114 @@
+/*new books*/
+INSERT INTO books
+    (title, author_fnaame, author_lname, released_year, stock_quantity, pages)
+    VALUES ('10% Happier', 'Dan', 'Harris', 2014, 29, 256), 
+           ('fake_book', 'Freida', 'Harris', 2001, 287, 428),
+           ('Lincoln In The Bardo', 'George', 'Saunders', 2017, 1000, 367);
+
+-- Distinct
+select distinct(author_lname) from books;
+
+-- what about Distinct full name
+
+select distinct(concat(author_fnaame,' ' ,author_lname))
+from books;
+
+/*---------------------------------------*/
+
+-- Order By 
+select author_lname from books order by author_lname DESC;
+
+select released_year from books
+order by released_year DESC;
+
+select title,author_fnaame,author_lname
+from books
+order by 3;
+
+
+/*---------------------------------------*/
+SELECT title,author_fnaame,author_lname
+FROM books
+ORDER BY author_fnaame,author_lname
+LIMIT 5;
+
+
+-- LIMIT starting_point, how many records
+-- get two records start from 1st 
+-- index start from 0 for row 
+
+SELECT title, released_year FROM books 
+ORDER BY released_year DESC LIMIT 0,2;
+
+
+
+/*limit starting point, till end of records*/
+SELECT * FROM tbl LIMIT 95,18446744073709551615;
+
+/*---------------------------------------*/
+
+select * from books
+where author_fnaame like '%da%';
+
+/*MySQL like search is case insensitive.
++--------------------+
+| name               |
++--------------------+
+| Test               |
+| test               |
++--------------------+*/
+
+select name from users where name like 't%';
+
+-- underscore for each character
+-- start with D with 2 charcters followed by
+
+select * from books
+where author_fnaame like 'D__';
+
+-- Four digit stock quantity
+select *
+from books
+where stock_quantity like '___';
+
+-- escaping special character
+select * from books
+where title like '%\%%';
+
+
+/*=====================Questions ===============================*/
+-- Titles  That contain 'stories
+select *from books
+where title like '%stories%';
+
+/*Find The Longest Book
+Print Out the Title and Page Count*/
+
+select title,pages
+from books
+order by pages desc
+limit 1;
+
+
+/*Print a summary containing the title and year, for the 3 most recent books
+
+select concat(title,' ',released_year) AS 'summary'
+from books
+order by released_year desc
+limit 3;
+
+
+/*Find all books with an author_lname that contains a space(" ")
+select title,author_lname
+from books
+where author_lname like '% %';
+
+-- Print title and author_lname, sorted first by author_lname and then by title
+select title,author_lname
+from books
+order by 2,1;
+
+/*Sorted Alphabetically By Last Name*/
+SELECT CONCAT('MY FAVOURITE AUTHOR IS ',UPPER(author_fnaame),' ',UPPER(author_lname)) AS 'YELL'
+FROM books
+ORDER BY author_lname;
